@@ -1,6 +1,6 @@
 // Select Elements
-const video = document.querySelector("video");
-const toggle = document.querySelector(".player__button");
+const video = document.querySelector(".player__video");
+const toggle = document.querySelector(".toggle");
 const progress = document.querySelector(".progress");
 const progressFilled = document.querySelector(".progress__filled");
 const volumeControl = document.querySelector("input[name='volume']");
@@ -8,54 +8,50 @@ const speedControl = document.querySelector("input[name='playbackSpeed']");
 const rewindBtn = document.querySelector(".rewind");
 const forwardBtn = document.querySelector(".forward");
 
-// PLAY / PAUSE TOGGLE
+// PLAY/PAUSE
 function togglePlay() {
-  if (video.paused) {
-    video.play();
-  } else {
-    video.pause();
-  }
+  if (video.paused) video.play();
+  else video.pause();
 }
 
-// UPDATE PLAY/PAUSE BUTTON  
+// Update play button icon
 function updateButton() {
-  const icon = video.paused ? "►" : "❚ ❚";
-  toggle.textContent = icon;
+  toggle.textContent = video.paused ? "►" : "❚ ❚";
 }
 
-// UPDATE PROGRESS BAR  
+// Update progress bar
 function handleProgress() {
   const percent = (video.currentTime / video.duration) * 100;
   progressFilled.style.width = `${percent}%`;
 }
 
-// CONTROL VOLUME  
+// Volume
 function updateVolume() {
   video.volume = this.value;
 }
 
-// CONTROL SPEED  
+// Speed
 function updateSpeed() {
   video.playbackRate = this.value;
 }
 
-// CLICK ON PROGRESS BAR TO SEEK  
+// Scrub on progress click
 function scrub(e) {
   const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
   video.currentTime = scrubTime;
 }
 
-// REWIND 10 SECONDS  
+// Rewind
 function rewind() {
   video.currentTime -= 10;
 }
 
-// FORWARD 25 SECONDS  
+// Forward
 function forward() {
   video.currentTime += 25;
 }
 
-// Event Listeners
+// Event listeners
 toggle.addEventListener("click", togglePlay);
 video.addEventListener("click", togglePlay);
 video.addEventListener("play", updateButton);
@@ -66,7 +62,7 @@ volumeControl.addEventListener("input", updateVolume);
 speedControl.addEventListener("input", updateSpeed);
 
 progress.addEventListener("click", scrub);
-
 rewindBtn.addEventListener("click", rewind);
 forwardBtn.addEventListener("click", forward);
+
 

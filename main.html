@@ -7,6 +7,7 @@
 </head>
 <body>
 
+  <!-- Your first video wrapper (not part of test) -->
   <div class="wrapper">
     <video class="flex" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" controls></video>
     <div class="speed">
@@ -14,25 +15,28 @@
     </div>
   </div>
 
-<script  src="./script.js">
- <div class="player">
-  <video src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+  <!-- Cypress-tested Video Player -->
+  <div class="player">
+    <video class="player__video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
 
-  <div class="controls">
-    <button class="player__button">►</button>
+    <div class="controls">
+      <button class="toggle">►</button>
 
-    <button class="rewind">« 10s</button>
-    <button class="forward">25s »</button>
+      <button class="rewind">« 10s</button>
+      <button class="forward">25s »</button>
 
-    <input type="range" name="volume" min="0" max="1" step="0.05">
-    <input type="range" name="playbackSpeed" min="0.5" max="2" step="0.1">
+      <input type="range" name="volume" min="0" max="1" step="0.05">
+      <input type="range" name="playbackSpeed" min="0.5" max="2" step="0.1">
 
-    <div class="progress">
-      <div class="progress__filled"></div>
+      <div class="progress">
+        <div class="progress__filled"></div>
+      </div>
     </div>
   </div>
-</div>
 
-</script>
+  <!-- LOAD your JS here -->
+  <script src="./script.js"></script>
+
 </body>
 </html>
+
